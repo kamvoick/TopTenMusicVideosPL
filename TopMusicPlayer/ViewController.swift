@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     
     func zaladowalDane(videos: [MusicVideos]){ //kiedy wykona się api wtey załaduje tą funkcje
         
+        print(reachabilityStatus)
+        
         self.videos = videos //musimy pozwolić aby nasze wartości zapisywały się do videów(ja mówić polski...) więc zwiększamy zakres przypisując te videa do zmiennych zadeklarowanych wyżej czyli self
         
         //        for element in videos {

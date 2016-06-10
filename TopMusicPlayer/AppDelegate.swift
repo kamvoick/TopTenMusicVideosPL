@@ -8,17 +8,50 @@
 
 import UIKit
 
+var reachability: Reachability?
+
+var reachabilityStatus = wifiDziała
+//globalne zmienne
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    var połączenieInternetowe: Reachability?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+        
+        połączenieInternetowe = Reachability.reachabilityForInternetConnection()
+        połączenieInternetowe?.startNotifier()
+        //więc tak, najpierw dodajemy obserwatora który będzie sprawdzał nasze połączenie, najpierw dodajemy kreachabilitychangednotif a potem wykona się reachabilitychanged(niżej), a tutaj dodajemy metode działania i obserwatora dla polaczenie internetowego i musimy go również usunąć gdy wyłączymy apke na dole
+        
         return true
     }
-
+    
+    func reachabilityChanged(notification: NSNotification){
+        reachability = notification.object as? Reachability
+        statusChangedWithReachability(reachability!)
+    }
+    
+    func statusChangedWithReachability(currentReachabilityStatus: Reachability){
+        
+        let networkStatus: NetworkStatus = currentReachabilityStatus.currentReachabilityStatus()
+        
+        switch networkStatus.rawValue{
+        case NotReachable.rawValue: reachabilityStatus = brakDostępuWifi
+        case ReachableViaWiFi.rawValue: reachabilityStatus = wifiDziała
+        case ReachableViaWWAN.rawValue: reachabilityStatus = WWAN
+        default:return
+        }
+        //pokazujemy kiedy jest dostepne połączenie z internetem taki jest kodzik, rav value bo jak cmd zrobisz to mamy 3 wartości przypisujemy w cesach przypadki
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("ReachStatusChanged", object: nil)
+        //wsadzamy powiadomienie które wykona kolejne działanie, czyli jeżeli zmieni się status sieci to zrób coś...
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -38,9 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
     }
-
-
 }
-

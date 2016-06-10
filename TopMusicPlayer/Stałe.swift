@@ -11,7 +11,7 @@ import Foundation
 typealias JSONDictionary = [String: AnyObject]
 typealias JSONArray = Array<AnyObject>
 
-let wifi = "Wifi działa"
-let brakwifi = "Brak połączenia wifi"
+let wifiDziała = "Wifi działa"
+let brakDostępuWifi = "Brak połączenia wifi"
 let WWAN = "Bezprzewodowy dostęp prze sięć komórkową" //chodzi o 3g 4g lte
 
