@@ -16,6 +16,7 @@
 		4278D7A01D09F9F600478466 /* TopMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278D79F1D09F9F600478466 /* TopMusicPlayerUITests.swift */; };
 		4278D7B41D0A16C800478466 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278D7B31D0A16C800478466 /* APIManager.swift */; };
 		4278D7B71D0ADAF500478466 /* Stałe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278D7B61D0ADAF500478466 /* Stałe.swift */; };
+		4278D7B91D0ADD4300478466 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278D7B81D0ADD4300478466 /* MusicVideo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		4278D7A11D09F9F600478466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4278D7B31D0A16C800478466 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		4278D7B61D0ADAF500478466 /* Stałe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stałe.swift"; sourceTree = "<group>"; };
+		4278D7B81D0ADD4300478466 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				4278D7B31D0A16C800478466 /* APIManager.swift */,
+				4278D7B81D0ADD4300478466 /* MusicVideo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			files = (
 				4278D7B41D0A16C800478466 /* APIManager.swift in Sources */,
 				4278D7B71D0ADAF500478466 /* Stałe.swift in Sources */,
+				4278D7B91D0ADD4300478466 /* MusicVideo.swift in Sources */,
 				4278D7821D09F9F500478466 /* ViewController.swift in Sources */,
 				4278D7801D09F9F500478466 /* AppDelegate.swift in Sources */,
 			);
