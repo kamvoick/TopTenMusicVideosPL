@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         //pokazujemy kiedy jest dostepne połączenie z internetem taki jest kodzik, rav value bo jak cmd zrobisz to mamy 3 wartości przypisujemy w cesach przypadki
         
-        NSNotificationCenter.defaultCenter().postNotificationName("ReachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("reachStatusChanged", object: nil)
         //wsadzamy powiadomienie które wykona kolejne działanie, czyli jeżeli zmieni się status sieci to zrób coś...
     }
     
