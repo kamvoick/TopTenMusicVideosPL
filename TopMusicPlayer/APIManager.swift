@@ -22,18 +22,32 @@ class APIManager {
                 if error != nil{
                     completion(result: error!.localizedDescription) //czyli jeżeli jest błąd pokażemy jaki ! - bo błąd musi być
                 }else{
-                    completion(result: "NSRULsession powiodło się")
-                    print(data) //jeżeli nie ma błędów to pokazujemy dane
+                    
+                    do{
+                        //konwertujemy data do jsona, do try catch, zamieniamy na słownik
+                        if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary{
+                            
+                            print(json)
+                            
+                            let priority = DISPATCH_QUEUE_PRIORITY_HIGH
+                            dispatch_async(dispatch_get_global_queue(priority, 0), {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    completion(result: "NSJSON Serializacja powiodła się")
+                                    //więc jeżeli wszystko jest okej to powinno wyświetlić się powiodło się, priority oznacza ważność - tutaj concurrency, współbierzność, chodzi o to że mamy dużo wątków i chcemy żeby nasze zadanie miało główny pierwszą ważność, jeżeli mamy inne rzeczy działające w tle, 0 jest dla przyszłego wykorzystania
+                                })
+                            })
+                            
+                        }
+                    }catch{
+                        dispatch_async(dispatch_get_main_queue(), {
+                            completion(result: "NSJSONSerializtion nie powiodło się")
+                        })
+                    }
+                    
+                    
                 }
             })
-            
-            
-            
-            
-            
-        }.resume()//zawsze musi być bo inaczej nie wykona, zadanie zaczyna się w "zawieszonym stanie" dopiero resume sprawia że się wykonuje
+            }.resume()//zawsze musi być bo inaczej nie wykona, zadanie zaczyna się w "zawieszonym stanie" dopiero resume sprawia że się wykonuje
         
-        
-    
-}
+    }
 }
