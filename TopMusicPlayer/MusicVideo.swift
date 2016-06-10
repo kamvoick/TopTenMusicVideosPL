@@ -8,18 +8,18 @@
 
 import Foundation
 
-class MusicVideo {
+class MusicVideos {
     
-    private var _nazwaV: String!
-    private var _prawaV: String!
-    private var _cenaV: String!
-    private var _urlObrazV: String!
-    private var _artystaV: String!
-    private var _urlVideoV: String!
-    private var _imIdV: String!
-    private var _rodzajV: String!
-    private var _linkDoItunesV: String!
-    private var _dataWydaniaV: String!
+    private var _nazwaV: String
+    private var _prawaV: String
+    private var _cenaV: String
+    private var _urlObrazV: String
+    private var _artystaV: String
+    private var _urlVideoV: String
+    private var _imIdV: String
+    private var _rodzajV: String
+    private var _linkDoItunesV: String
+    private var _dataWydaniaV: String
     
     var nazwaV: String{
         return _nazwaV

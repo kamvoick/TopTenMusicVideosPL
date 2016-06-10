@@ -10,7 +10,7 @@ import Foundation
 
 class APIManager {
     
-    func zaladujDane(urlStr: String, completion: (result: String) -> Void) {
+    func zaladujDane(urlStr: String, completion: [MusicVideos] -> Void) {
         
         let konfiguracja = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         let sesja = NSURLSession(configuration: konfiguracja) //bardzo ważna rzecz tutaj, jeżeli pobieramy jakiekowiek api w przypadku braku połączenia z internetem ponieważ na dysku zapisują się cookie (cashing) ciągle będziemy mieć te dane, a my chcemy w takim momencie wyświetlić użytkownikowi komunikat(err) że nie można pobrać bo nie ma dostępu do internetu
@@ -18,36 +18,42 @@ class APIManager {
         let url = NSURL(string: urlStr)! //pobieramy nasz adres z parametru funkcji
         let zadanie = sesja.dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
             
-            dispatch_async(dispatch_get_main_queue(), { //dispach czyli wrzucamy do głównego wątku
                 if error != nil{
-                    completion(result: error!.localizedDescription) //czyli jeżeli jest błąd pokażemy jaki ! - bo błąd musi być
+                    print(error!.localizedDescription) //czyli jeżeli jest błąd pokażemy jaki ! - bo błąd musi być
                 }else{
                     
                     do{
                         //konwertujemy data do jsona, do try catch, zamieniamy na słownik
-                        if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary{
+                        if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary,
+                        feed = json["feed"] as? JSONDictionary,
+                        entries = feed["entry"] as? JSONArray{
                             
-                            print(json)
+                            var videos = [MusicVideos]()
+                            for entry in entries{
+                                let entry = MusicVideos(data: entry as! JSONDictionary)
+                                videos.append(entry)
+                                //robimy loopa dla każdego elementu i wsadzamy do naszego arraya
+                            }
+                            
+                            let ilePobranych = videos.count
+                            print("liczba pobranych elementów: \(ilePobranych)\n")
+                            
                             
                             let priority = DISPATCH_QUEUE_PRIORITY_HIGH
                             dispatch_async(dispatch_get_global_queue(priority, 0), {
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    completion(result: "NSJSON Serializacja powiodła się")
-                                    //więc jeżeli wszystko jest okej to powinno wyświetlić się powiodło się, priority oznacza ważność - tutaj concurrency, współbierzność, chodzi o to że mamy dużo wątków i chcemy żeby nasze zadanie miało główny pierwszą ważność, jeżeli mamy inne rzeczy działające w tle, 0 jest dla przyszłego wykorzystania
+                                    completion(videos)
+                                    //więc jeżeli wszystko jest okej to powinno wyświetlić się powiodło, priority oznacza ważność - tutaj concurrency, współbierzność, chodzi o to że mamy dużo wątków i chcemy żeby nasze zadanie miało główny pierwszą ważność jeżeli mamy inne rzeczy działające w tle, 0 jest dla przyszłego wykorzystania
                                 })
                             })
                             
                         }
                     }catch{
                         dispatch_async(dispatch_get_main_queue(), {
-                            completion(result: "NSJSONSerializtion nie powiodło się")
+                            print("NSJSONSerializtion nie powiodło się")
                         })
                     }
-                    
-                    
                 }
-            })
             }.resume()//zawsze musi być bo inaczej nie wykona, zadanie zaczyna się w "zawieszonym stanie" dopiero resume sprawia że się wykonuje
-        
     }
 }

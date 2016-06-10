@@ -9,28 +9,36 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var videos = [MusicVideos]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
-    let API = APIManager()
+        
+        
+        let API = APIManager()
         API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=10/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane
-    
-    
+        
+        
     }
-
-    func zaladowalDane(result: String){
+    
+    func zaladowalDane(videos: [MusicVideos]){ //kiedy wykona się api wtey załaduje tą funkcje
         
-        let alert = UIAlertController(title: (result), message: nil, preferredStyle: .Alert)
+        self.videos = videos //musimy pozwolić aby nasze wartości zapisywały się do videów(ja mówić polski...) więc zwiększamy zakres przypisując te videa do zmiennych zadeklarowanych wyżej czyli self
         
-        let przyciskOk = UIAlertAction(title: "Ok", style: .Default) { (action) in
-            //tutaj możemy wykonać coś po naciśnięciu ok
+        //        for element in videos {
+        //            print("nazwa: \(element.nazwaV)")
+        //        }
+        
+        for (index, element) in videos.enumerate(){
+            print("id: \(index), nazwa: \(element.nazwaV)")
         }
-        
-        alert.addAction(przyciskOk)//dodaj tą akcje
-        self.presentViewController(alert, animated: true, completion: nil)//pokaż tą akcję
+//        albo tak samo będzie jak wpiszesz
+//        for i in 0..<videos.count{
+//            let video = videos[i]
+//            print("id: \(i), nazwa: \(video.nazwaV)")
+//        }
     }
-
+    
 }
 
