@@ -16,12 +16,17 @@ class MusicVideoTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "reachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "reachStatusChanged", object: nil)//notif odnośnie wifi
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "zmieniłaSięWielkośćCzcionek", name: UIContentSizeCategoryDidChangeNotification, object: nil)//notif odnośnie czcionek
         
         reachabilityStatusChanged()
         
         
-        
+    }
+    
+    func zmieniłaSięWielkośćCzcionek() {
+        print("zmieniła się wielkość czcionek")
     }
     
     func zaladowalDane(videos: [MusicVideos]){ //kiedy wykona się api wtey załaduje tą funkcje
@@ -93,7 +98,9 @@ class MusicVideoTVC: UITableViewController {
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "reachStatusChanged", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "reachStatusChanged", object: nil)//usuwamy obserwatora
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)//usuwamy obserwatora
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

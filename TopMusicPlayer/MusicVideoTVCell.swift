@@ -33,6 +33,10 @@ class MusicVideoTVCell: UITableViewCell {
     }
     
     func aktualizujKomórke(){
+        
+        tytułVideo.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        pozycjaVideo.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        
         tytułVideo.text = video?.nazwaV
         pozycjaVideo.text = "\(video!.rankowanie)"
         
