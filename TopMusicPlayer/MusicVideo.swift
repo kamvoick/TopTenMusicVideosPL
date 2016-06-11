@@ -10,6 +10,8 @@ import Foundation
 
 class MusicVideos {
     
+    var rankowanie = 0 //ponieważ mamy 0-based liczenie -> przejdz do jsona
+    
     private var _nazwaV: String
     private var _prawaV: String
     private var _cenaV: String

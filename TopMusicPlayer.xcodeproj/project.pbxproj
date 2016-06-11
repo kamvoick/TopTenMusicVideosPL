@@ -19,6 +19,7 @@
 		4278D7B91D0ADD4300478466 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278D7B81D0ADD4300478466 /* MusicVideo.swift */; };
 		4278D7BE1D0B2AC700478466 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4278D7BD1D0B2AC700478466 /* Reachability.m */; };
 		4278D7C01D0BA60A00478466 /* MusicVideoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278D7BF1D0BA60A00478466 /* MusicVideoTVC.swift */; };
+		4278D7C21D0C314600478466 /* MusicVideoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278D7C11D0C314600478466 /* MusicVideoTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		4278D7BC1D0B2AC700478466 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4278D7BD1D0B2AC700478466 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4278D7BF1D0BA60A00478466 /* MusicVideoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVC.swift; sourceTree = "<group>"; };
+		4278D7C11D0C314600478466 /* MusicVideoTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				4278D7811D09F9F500478466 /* ViewController.swift */,
 				4278D7BF1D0BA60A00478466 /* MusicVideoTVC.swift */,
+				4278D7C11D0C314600478466 /* MusicVideoTVCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				4278D7B41D0A16C800478466 /* APIManager.swift in Sources */,
 				4278D7B71D0ADAF500478466 /* Stałe.swift in Sources */,
 				4278D7B91D0ADD4300478466 /* MusicVideo.swift in Sources */,
+				4278D7C21D0C314600478466 /* MusicVideoTVCell.swift in Sources */,
 				4278D7821D09F9F500478466 /* ViewController.swift in Sources */,
 				4278D7BE1D0B2AC700478466 /* Reachability.m in Sources */,
 				4278D7801D09F9F500478466 /* AppDelegate.swift in Sources */,

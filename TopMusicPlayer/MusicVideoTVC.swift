@@ -50,7 +50,8 @@ class MusicVideoTVC: UITableViewController {
     
     func reachabilityStatusChanged(){
         switch reachabilityStatus {
-        case brakDostępuWifi: view.backgroundColor = UIColor.redColor()
+        case brakDostępuWifi:
+            //view.backgroundColor = UIColor.redColor()
         dispatch_async(dispatch_get_main_queue(), { //musimy wrzucić do głównego wątku bo bez tego pokazujemy alert w momencie gdy viewdidload załadował się raz ale jescze niezaładował view dlatego go tam nie ma a my chcemy na to wsadzić alert
         let alert = UIAlertController(title: "Brak połączenia wifi", message: "Sprawdź swoje połaczenie wifi", preferredStyle: .Alert)
             
@@ -76,7 +77,7 @@ class MusicVideoTVC: UITableViewController {
             self.presentViewController(alert, animated: true, completion: nil)//pokazujemy vc
             })
         default:
-            view.backgroundColor = UIColor.greenColor()
+            //view.backgroundColor = UIColor.greenColor()
             
             if videos.count > 0 { //ponieważ chcemy żeby api wykonało się po włączeniu a nie na samym początku ustawiamy liczbę video na więcej niż zero co oznaczać będzie że już został włączony
             print("nie odświeżaj API")
@@ -88,7 +89,7 @@ class MusicVideoTVC: UITableViewController {
     
     func wykonajApi(){
         let API = APIManager()
-        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=100/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane
+        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=200/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane, 200 to max dla itunes
     }
     
     deinit{
@@ -103,15 +104,16 @@ class MusicVideoTVC: UITableViewController {
         return videos.count
     }
 
+    private struct storyboard{
+        static let cellReusableIdentifier = "komórka" //żebyśmy nie musili za każdym razem wpisywać komórka do wykorzystanej komórki niżej możesz wpisać storyboard.cellreusableidentifier, dobre jeżeli mamy dużo komórek różnych, struct bo robimy nową strukturę prywatną, jeszcze nie klasę
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let komórka = tableView.dequeueReusableCellWithIdentifier("komórka", forIndexPath: indexPath)
+        let komórka = tableView.dequeueReusableCellWithIdentifier(storyboard.cellReusableIdentifier, forIndexPath: indexPath) as! MusicVideoTVCell //musimy tą komórke zcastować na nasz zcustomizowaną komórke
         
-        let video = videos[indexPath.row]
+        komórka.video = videos[indexPath.row]//w tym momencie bierzemy nasze video i przechodzimy do komórki -> musicvideotvcell i tam dalej
         
-        komórka.textLabel?.text = "\(indexPath.row + 1)"
         
-        komórka.detailTextLabel?.text = "\(video.nazwaV)"
         
         
         

@@ -29,8 +29,9 @@ class APIManager {
                         entries = feed["entry"] as? JSONArray{
                             
                             var videos = [MusicVideos]()
-                            for entry in entries{
+                            for (index, entry) in entries.enumerate(){
                                 let entry = MusicVideos(data: entry as! JSONDictionary)
+                                entry.rankowanie = index + 1 //zawsze będzie dodawał +1, więc jak jest 0 będzie 1 ale musi być enumerate, robimy tutaj żeby móc w każdej chwili dodać kolejne dane do jsona
                                 videos.append(entry)
                                 //robimy loopa dla każdego elementu i wsadzamy do naszego arraya
                             }
