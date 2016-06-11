@@ -20,8 +20,6 @@ class MusicVideoTVC: UITableViewController {
         
         reachabilityStatusChanged()
         
-        let API = APIManager()
-        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=100/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane
         
         
     }
@@ -53,15 +51,44 @@ class MusicVideoTVC: UITableViewController {
     func reachabilityStatusChanged(){
         switch reachabilityStatus {
         case brakDostępuWifi: view.backgroundColor = UIColor.redColor()
-        //reachabilityText.text = "brak dostepu wifi"
-        case wifiDziała: view.backgroundColor = UIColor.greenColor()
-        //reachabilityText.text = "wifi działa"
-        case WWAN: view.backgroundColor = UIColor.yellowColor()
-        //reachabilityText.text = "dostęp poprzez sieć komórkową"
+        dispatch_async(dispatch_get_main_queue(), { //musimy wrzucić do głównego wątku bo bez tego pokazujemy alert w momencie gdy viewdidload załadował się raz ale jescze niezaładował view dlatego go tam nie ma a my chcemy na to wsadzić alert
+        let alert = UIAlertController(title: "Brak połączenia wifi", message: "Sprawdź swoje połaczenie wifi", preferredStyle: .Alert)
             
+            let przyciskAnulowania = UIAlertAction(title: "Anuluj", style: .Default, handler: { (UIAlertAction) in
+                print("Anuluj")
+            })
+            
+            let przyciskUsuwania = UIAlertAction(title: "Usuń", style: .Destructive, handler: { (UIAlertAction) in
+                print("Usuń")
+            })
+            
+            let przyciskOk = UIAlertAction(title: "Ok", style: .Default, handler: { (UIAlertAction) in
+                print("Ok")
+                
+                //tutaj wpisz co chcesz wykonać po naciśnięciu ok
+            })
+            
+            alert.addAction(przyciskOk)
+            alert.addAction(przyciskAnulowania)
+            alert.addAction(przyciskUsuwania)
+            //kolejność ma znaczenie
+            
+            self.presentViewController(alert, animated: true, completion: nil)//pokazujemy vc
+            })
         default:
-            return
+            view.backgroundColor = UIColor.greenColor()
+            
+            if videos.count > 0 { //ponieważ chcemy żeby api wykonało się po włączeniu a nie na samym początku ustawiamy liczbę video na więcej niż zero co oznaczać będzie że już został włączony
+            print("nie odświeżaj API")
+            }else{
+                wykonajApi()
+            }
         }
+    }
+    
+    func wykonajApi(){
+        let API = APIManager()
+        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=100/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane
     }
     
     deinit{
