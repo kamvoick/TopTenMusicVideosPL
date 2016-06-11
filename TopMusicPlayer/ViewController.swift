@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var reachabilityText: UILabel!
     
     var videos = [MusicVideos]()
@@ -22,7 +23,7 @@ class ViewController: UIViewController {
         reachabilityStatusChanged()
         
         let API = APIManager()
-        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=10/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane
+        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=100/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane
         
         
     }
@@ -40,6 +41,10 @@ class ViewController: UIViewController {
         for (index, element) in videos.enumerate(){
             print("id: \(index), nazwa: \(element.nazwaV)")
         }
+        
+        tableView.reloadData()
+        
+        
 //        albo tak samo będzie jak wpiszesz
 //        for i in 0..<videos.count{
 //            let video = videos[i]
@@ -63,6 +68,29 @@ class ViewController: UIViewController {
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "reachStatusChanged", object: nil)
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return videos.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let komórka = tableView.dequeueReusableCellWithIdentifier("komórka", forIndexPath: indexPath)
+        
+        let video = videos[indexPath.row]
+        
+        komórka.textLabel?.text = "\(indexPath.row + 1)"
+        
+        komórka.detailTextLabel?.text = "\(video.nazwaV)"
+        
+        
+        
+        
+        return komórka
     }
 }
 

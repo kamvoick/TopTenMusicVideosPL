@@ -10,7 +10,7 @@ import UIKit
 
 var reachability: Reachability?
 
-var reachabilityStatus = wifiDziała
+var reachabilityStatus = ""
 //globalne zmienne
 
 @UIApplicationMain
@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         połączenieInternetowe = Reachability.reachabilityForInternetConnection()
         połączenieInternetowe?.startNotifier()
         //więc tak, najpierw dodajemy obserwatora który będzie sprawdzał nasze połączenie, najpierw dodajemy kreachabilitychangednotif a potem wykona się reachabilitychanged(niżej), a tutaj dodajemy metode działania i obserwatora dla polaczenie internetowego i musimy go również usunąć gdy wyłączymy apke na dole
+        statusChangedWithReachability(połączenieInternetowe!) //chodzi o to że za pierwszym razem kiedy odpalamy apke status jest "" i on zapamiętuje to jako pierwsze więc nie dodaje faktu że połączenie zostało zmienione, więc musimy zainicjować pierwszą dostępność internetową a potem w vc wykonają się kolejne, będzie aktualizowało
         
         return true
     }
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func reachabilityChanged(notification: NSNotification){
         reachability = notification.object as? Reachability
         statusChangedWithReachability(reachability!)
+        
     }
     
     func statusChangedWithReachability(currentReachabilityStatus: Reachability){
