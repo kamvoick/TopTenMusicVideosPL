@@ -30,6 +30,19 @@ class ustawieniaTVC: UITableViewController {
         
         //tu pobieramy switcha
         touchIdSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("ustawieniaBezpieczeństwa")
+        
+        if (NSUserDefaults.standardUserDefaults().objectForKey("sliderLiczbaMusicVideo") != nil){ //musimy sprawdzić czy coś tam już jest bo będzie crash
+            let wartość = NSUserDefaults.standardUserDefaults().objectForKey("sliderLiczbaMusicVideo") as! Int //jeżeli nie zcastujemy to będzie dowolny obiekt
+            liczbaMusicVideo.text = "\(wartość)"
+            sliderLiczbaMusicVideo.value = Float(wartość) //bo tutaj jest zawsze float a my bierzemy z int
+            
+        }
+    }
+    @IBAction func zmieniaczLiczbyWideo(sender: AnyObject) {
+        
+        let defaults = NSUserDefaults.standardUserDefaults() //zapisujemy do nsuserdefaults
+        defaults.setObject(Int(sliderLiczbaMusicVideo.value), forKey: "sliderLiczbaMusicVideo") //do int bo to float
+        liczbaMusicVideo.text = "\(Int(sliderLiczbaMusicVideo.value))"
     }
 
     //tutaj ustawiamy switcha i zapisujemy w nsuderdefaults
