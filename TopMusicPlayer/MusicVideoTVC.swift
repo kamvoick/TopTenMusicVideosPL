@@ -16,7 +16,7 @@ class MusicVideoTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "reachStatusChanged", object: nil)//notif odnośnie wifi
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.reachabilityStatusChanged), name: "reachStatusChanged", object: nil)//notif odnośnie wifi
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "zmieniłaSięWielkośćCzcionek", name: UIContentSizeCategoryDidChangeNotification, object: nil)//notif odnośnie czcionek
         
@@ -60,24 +60,24 @@ class MusicVideoTVC: UITableViewController {
         dispatch_async(dispatch_get_main_queue(), { //musimy wrzucić do głównego wątku bo bez tego pokazujemy alert w momencie gdy viewdidload załadował się raz ale jescze niezaładował view dlatego go tam nie ma a my chcemy na to wsadzić alert
         let alert = UIAlertController(title: "Brak połączenia wifi", message: "Sprawdź swoje połaczenie wifi", preferredStyle: .Alert)
             
-            let przyciskAnulowania = UIAlertAction(title: "Anuluj", style: .Default, handler: { (UIAlertAction) in
+         /* let przyciskAnulowania = UIAlertAction(title: "Anuluj", style: .Default, handler: { (UIAlertAction) in
                 print("Anuluj")
             })
             
             let przyciskUsuwania = UIAlertAction(title: "Usuń", style: .Destructive, handler: { (UIAlertAction) in
                 print("Usuń")
             })
-            
+            */
             let przyciskOk = UIAlertAction(title: "Ok", style: .Default, handler: { (UIAlertAction) in
                 print("Ok")
                 
                 //tutaj wpisz co chcesz wykonać po naciśnięciu ok
             })
-            
+ 
             alert.addAction(przyciskOk)
-            alert.addAction(przyciskAnulowania)
-            alert.addAction(przyciskUsuwania)
-            //kolejność ma znaczenie
+           /* alert.addAction(przyciskAnulowania)
+            alert.addAction(przyciskUsuwania)*/
+            //kolejność
             
             self.presentViewController(alert, animated: true, completion: nil)//pokazujemy vc
             })
@@ -113,6 +113,7 @@ class MusicVideoTVC: UITableViewController {
 
     private struct storyboard{
         static let cellReusableIdentifier = "komórka" //żebyśmy nie musili za każdym razem wpisywać komórka do wykorzystanej komórki niżej możesz wpisać storyboard.cellreusableidentifier, dobre jeżeli mamy dużo komórek różnych, struct bo robimy nową strukturę prywatną, jeszcze nie klasę
+        static let segueIdentifier = "szczegolyMusicVideoVC"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -174,4 +175,15 @@ class MusicVideoTVC: UITableViewController {
     }
     */
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == storyboard.segueIdentifier{ //ponieważ możemy mieć segueja w wielu miejscach musimy się odnieść do tego że o ten konkretny nam chodzi ze szczegolamimvVC
+            
+            if let indexPath = tableView.indexPathForSelectedRow{//zależnie od tego którą komórke wybierzemy wpiszemy jej index do indexpath i nastepnie wyciągniemy to video z arraya z tą liczbą
+                let video = videos[indexPath.row]
+                let dvc = segue.destinationViewController as! szczegolyMusicVideoVC //przeznaczonym vc będzie nasz szczegolymvVC
+                dvc.videos = video //no i video w naszym dvc to będzie to video
+                
+            }
+        }
+    }
 }

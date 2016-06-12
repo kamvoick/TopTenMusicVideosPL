@@ -67,7 +67,7 @@ class MusicVideos {
         if let obraz = data["im:image"] as? JSONArray,
             obrazV = obraz[2] as? JSONDictionary,
             obrazVV = obrazV["label"] as? String{
-            self._urlObrazV = obrazVV.stringByReplacingOccurrencesOfString("100x100", withString: "200x200") //możemy zrobić taki trik że zamienimy rozdzielczość, itunes akurat ma taką opcje że niezaleznie co wsadzimy będzie w dobrej rozdzielczości
+            self._urlObrazV = obrazVV.stringByReplacingOccurrencesOfString("100x100", withString: "600x600") //możemy zrobić taki trik że zamienimy rozdzielczość, itunes akurat ma taką opcje że niezaleznie co wsadzimy będzie w dobrej rozdzielczości
         }else{
             self._urlObrazV = "" //podobnie jak wyżej
         }
