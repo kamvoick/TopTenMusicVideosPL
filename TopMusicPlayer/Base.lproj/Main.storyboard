@@ -51,7 +51,7 @@
                                         <constraint firstItem="Usq-Ga-B8w" firstAttribute="bottom" secondItem="BeX-17-svZ" secondAttribute="bottom" id="KLS-Q7-76C"/>
                                         <constraint firstItem="Usq-Ga-B8w" firstAttribute="top" secondItem="PJx-o7-AJ0" secondAttribute="top" id="SUB-T4-jd7"/>
                                         <constraint firstItem="Usq-Ga-B8w" firstAttribute="leading" secondItem="aDP-l1-8DW" secondAttribute="leadingMargin" id="SoG-23-erl"/>
-                                        <constraint firstItem="PJx-o7-AJ0" firstAttribute="leading" secondItem="Usq-Ga-B8w" secondAttribute="trailing" constant="8" symbolic="YES" id="YDC-2o-JON"/>
+                                        <constraint firstItem="PJx-o7-AJ0" firstAttribute="leading" secondItem="Usq-Ga-B8w" secondAttribute="trailing" constant="8" id="YDC-2o-JON"/>
                                         <constraint firstItem="PJx-o7-AJ0" firstAttribute="leading" secondItem="BeX-17-svZ" secondAttribute="leading" id="iW4-us-5iY"/>
                                         <constraint firstItem="Usq-Ga-B8w" firstAttribute="bottom" secondItem="aDP-l1-8DW" secondAttribute="bottomMargin" id="oBh-kI-wvo"/>
                                         <constraint firstItem="BeX-17-svZ" firstAttribute="top" secondItem="PJx-o7-AJ0" secondAttribute="bottom" constant="20" id="thO-eb-yEl"/>
@@ -61,6 +61,7 @@
                                     <outlet property="obrazekVideo" destination="Usq-Ga-B8w" id="BGd-Cf-iwQ"/>
                                     <outlet property="pozycjaVideo" destination="PJx-o7-AJ0" id="zxl-aI-iwz"/>
                                     <outlet property="tytułVideo" destination="BeX-17-svZ" id="FoN-v1-1ue"/>
+                                    <segue destination="VbZ-71-ddb" kind="show" id="Gc9-TQ-sys"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -74,6 +75,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeF-AG-1YE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1196" y="186"/>
+        </scene>
+        <!--Szczegoly Music Video-->
+        <scene sceneID="JYu-2O-d8x">
+            <objects>
+                <viewController id="VbZ-71-ddb" customClass="szczegolyMusicVideo" customModule="TopMusicPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sWd-zR-hfa"/>
+                        <viewControllerLayoutGuide type="bottom" id="5nP-5u-ors"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j0r-mv-oxf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Plm-kc-seU">
+                                <rect key="frame" x="20" y="113" width="560" height="270"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="tytuł" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hao-ky-9Fx">
+                                <rect key="frame" x="20" y="72" width="560" height="33"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="DjN-nD-LyC">
+                                <rect key="frame" x="20" y="391" width="560" height="110"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oVe-R4-PEt">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gatunek:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgU-fW-gwc">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cena:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szP-Hm-ceo">
+                                                <rect key="frame" x="280" y="0.0" width="280" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prawa:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzN-oc-kpI">
+                                        <rect key="frame" x="0.0" y="90" width="560" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oVe-R4-PEt" firstAttribute="leading" secondItem="DjN-nD-LyC" secondAttribute="leading" id="AXw-QM-n9D"/>
+                                    <constraint firstItem="GzN-oc-kpI" firstAttribute="centerX" secondItem="DjN-nD-LyC" secondAttribute="centerX" id="UV0-bb-hzc"/>
+                                    <constraint firstAttribute="trailing" secondItem="oVe-R4-PEt" secondAttribute="trailing" id="XQ2-1F-xxq"/>
+                                    <constraint firstItem="oVe-R4-PEt" firstAttribute="top" secondItem="DjN-nD-LyC" secondAttribute="top" id="flc-BX-db5"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hao-ky-9Fx" firstAttribute="centerX" secondItem="j0r-mv-oxf" secondAttribute="centerX" id="A58-tH-AO7"/>
+                            <constraint firstItem="Plm-kc-seU" firstAttribute="trailing" secondItem="j0r-mv-oxf" secondAttribute="trailingMargin" id="Bei-Yp-jZZ"/>
+                            <constraint firstItem="Plm-kc-seU" firstAttribute="leading" secondItem="j0r-mv-oxf" secondAttribute="leadingMargin" id="CGD-O1-uTU"/>
+                            <constraint firstItem="DjN-nD-LyC" firstAttribute="top" secondItem="Plm-kc-seU" secondAttribute="bottom" constant="20" id="G9Z-i7-7LC"/>
+                            <constraint firstItem="Hao-ky-9Fx" firstAttribute="leading" secondItem="j0r-mv-oxf" secondAttribute="leadingMargin" id="Gqv-GG-EpT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DjN-nD-LyC" secondAttribute="trailing" id="HN3-gv-ZOu"/>
+                            <constraint firstItem="Hao-ky-9Fx" firstAttribute="trailing" secondItem="j0r-mv-oxf" secondAttribute="trailingMargin" id="NK5-Gc-GPs"/>
+                            <constraint firstItem="5nP-5u-ors" firstAttribute="top" secondItem="DjN-nD-LyC" secondAttribute="bottom" constant="20" id="OYg-qM-wcI"/>
+                            <constraint firstItem="Hao-ky-9Fx" firstAttribute="top" secondItem="sWd-zR-hfa" secondAttribute="bottom" constant="8" id="YtK-a7-zuW"/>
+                            <constraint firstItem="Plm-kc-seU" firstAttribute="top" secondItem="Hao-ky-9Fx" secondAttribute="bottom" constant="8" id="ce3-SJ-Jz7"/>
+                            <constraint firstItem="Plm-kc-seU" firstAttribute="top" secondItem="Hao-ky-9Fx" secondAttribute="bottom" constant="8" id="dSW-77-uqi"/>
+                            <constraint firstItem="DjN-nD-LyC" firstAttribute="leading" secondItem="j0r-mv-oxf" secondAttribute="leadingMargin" id="sSB-hJ-qqj"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="play" id="Qy8-6r-dWH">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CfN-d5-kbA"/>
+                        <barButtonItem systemItem="action" id="ojE-X7-9qB">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </toolbarItems>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hMI-rD-Srb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896" y="186"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5SN-Op-ZYp">
