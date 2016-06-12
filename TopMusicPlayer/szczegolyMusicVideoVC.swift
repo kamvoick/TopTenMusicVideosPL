@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+
 
 class szczegolyMusicVideoVC: UIViewController {
 
@@ -41,6 +44,19 @@ class szczegolyMusicVideoVC: UIViewController {
         }
         obrazekVideo.clipsToBounds = true
         
+    }
+    
+    @IBAction func odtwarzajVideo(sender: AnyObject) {
+        
+        let url = NSURL(string: videos.urlVideoV)
+        let odtwarzacz = AVPlayer(URL: url!)
+        let odtwarzaczViewController = AVPlayerViewController()
+        odtwarzaczViewController.player = odtwarzacz //pokazujemy co ma odtwarzać
+        self.presentViewController(odtwarzaczViewController, animated: true) { 
+            odtwarzaczViewController.player?.play()
+        }
+        
         
     }
+    
 }

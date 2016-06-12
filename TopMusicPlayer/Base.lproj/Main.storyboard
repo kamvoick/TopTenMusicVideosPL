@@ -280,7 +280,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cena:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szP-Hm-ceo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cena:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szP-Hm-ceo">
                                 <rect key="frame" x="537" y="418" width="43" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="287" id="p1N-b7-9Hf"/>
@@ -289,7 +289,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gatunek:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgU-fW-gwc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gatunek:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgU-fW-gwc">
                                 <rect key="frame" x="20" y="418" width="65" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="274" id="CJP-Mo-pQk"/>
@@ -331,15 +331,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="dWv-da-DYE"/>
+                                <exclude reference="j9U-wJ-JGz"/>
+                                <exclude reference="ocK-lo-cFa"/>
+                                <exclude reference="yOo-sk-xKD"/>
                                 <exclude reference="vGN-aE-RTh"/>
                                 <exclude reference="6uf-iz-VDo"/>
                                 <exclude reference="812-j7-bCn"/>
                                 <exclude reference="Cfu-7d-NtM"/>
                                 <exclude reference="wIG-yU-m9w"/>
-                                <exclude reference="dWv-da-DYE"/>
-                                <exclude reference="j9U-wJ-JGz"/>
-                                <exclude reference="ocK-lo-cFa"/>
-                                <exclude reference="yOo-sk-xKD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -361,6 +361,9 @@
                     <toolbarItems>
                         <barButtonItem systemItem="play" id="Qy8-6r-dWH">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="odtwarzajVideo:" destination="VbZ-71-ddb" id="ic6-4Y-snE"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="CfN-d5-kbA"/>
                         <barButtonItem systemItem="action" id="ojE-X7-9qB">
