@@ -26,8 +26,24 @@ class ustawieniaTVC: UITableViewController {
         tableView.alwaysBounceVertical = false //nie chcemy żeby się odbijało
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ustawieniaTVC.zmieniłaSięWielkośćCzcionek), name: UIContentSizeCategoryDidChangeNotification, object: nil)//notif odnośnie czcionek
         
+        title = "ustawienia"
+        
+        //tu pobieramy switcha
+        touchIdSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("ustawieniaBezpieczeństwa")
     }
 
+    //tutaj ustawiamy switcha i zapisujemy w nsuderdefaults
+    @IBAction func touchID(sender: AnyObject) {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if touchIdSwitch.on {
+            defaults.setBool(touchIdSwitch.on, forKey: "ustawieniaBezpieczeństwa")
+        }else{
+            defaults.setBool(false, forKey: "ustawieniaBezpieczeństwa")
+        }
+    }
+    
+    
     func zmieniłaSięWielkośćCzcionek() {
         informacjeLbl.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         bezpieczenstwoLbl.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)

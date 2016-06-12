@@ -17,9 +17,16 @@ class szczegolyMusicVideoVC: UIViewController {
     @IBOutlet weak var prawaVideo: UILabel!
     
     var videos: MusicVideos!
+    var bezpieczeństwo: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        bezpieczeństwo = NSUserDefaults.standardUserDefaults().boolForKey("ustawieniaBezpieczeństwa")
+//        
+//        if bezpieczeństwo == true {
+//            
+//        }
 
         title = videos.artystaV
         tytułVideo.text = videos.nazwaV

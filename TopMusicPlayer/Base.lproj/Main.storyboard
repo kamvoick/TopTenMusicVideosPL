@@ -60,6 +60,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WZn-PU-hWY">
                                                     <rect key="frame" x="543" y="24" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="touchID:" destination="siA-3b-Yxj" eventType="valueChanged" id="yNy-uO-DWK"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
