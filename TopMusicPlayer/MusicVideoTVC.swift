@@ -23,7 +23,7 @@ class MusicVideoTVC: UITableViewController, UISearchResultsUpdating {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.reachabilityStatusChanged), name: "reachStatusChanged", object: nil)//notif odnośnie wifi
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "zmieniłaSięWielkośćCzcionek", name: UIContentSizeCategoryDidChangeNotification, object: nil)//notif odnośnie czcionek
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MusicVideoTVC.zmieniłaSięWielkośćCzcionek), name: UIContentSizeCategoryDidChangeNotification, object: nil)//notif odnośnie czcionek
         
         reachabilityStatusChanged()
         
@@ -251,7 +251,7 @@ class MusicVideoTVC: UITableViewController, UISearchResultsUpdating {
     
     func filtrujSzukanie(searchText: String){
         filtrowanaSzukajka = videos.filter {videos in //bierzemy wszystko co wyszukujemy do naszego arraya
-            return videos.artystaV.lowercaseString.containsString(searchText.lowercaseString) //i zwracamy to co zawiera znaki jakie wpisaliśmy
+            return videos.artystaV.lowercaseString.containsString(searchText.lowercaseString) || videos.nazwaV.lowercaseString.containsString(searchText.lowercaseString) //i zwracamy to co zawiera znaki jakie wpisaliśmy
         }
         tableView.reloadData() //i przeładuj
     }

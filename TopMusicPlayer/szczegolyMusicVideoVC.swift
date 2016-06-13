@@ -70,18 +70,18 @@ class szczegolyMusicVideoVC: UIViewController  {
         
         let aktywnośćViewController: UIActivityViewController = UIActivityViewController(activityItems: [wiadomość1], applicationActivities: nil) //wiadomość do wpisania jak koomuś coś udostępniasz
         
-        aktywnośćViewController.excludedActivityTypes = [
-        UIActivityTypePostToFacebook,
-        UIActivityTypePostToTwitter,
-        UIActivityTypeMessage,
-        UIActivityTypeMail,
-        UIActivityTypePrint,
-        UIActivityTypeCopyToPasteboard,
-        UIActivityTypeAssignToContact,
-        UIActivityTypeSaveToCameraRoll,
-        UIActivityTypeAddToReadingList,
-        UIActivityTypePostToFlickr,
-        UIActivityTypePostToVimeo]
+//        aktywnośćViewController.excludedActivityTypes = [
+//        UIActivityTypePostToFacebook,
+//        UIActivityTypePostToTwitter,
+//        UIActivityTypeMessage,
+//        UIActivityTypeMail,
+//        UIActivityTypePrint,
+//        UIActivityTypeCopyToPasteboard,
+//        UIActivityTypeAssignToContact,
+//        UIActivityTypeSaveToCameraRoll,
+//        UIActivityTypeAddToReadingList,
+//        UIActivityTypePostToFlickr,
+//        UIActivityTypePostToVimeo]
         
         aktywnośćViewController.completionWithItemsHandler = {
             (aktywność, sukces, item, error) in //tutaj w momencie gdy skończymy wybór można coś zrobić

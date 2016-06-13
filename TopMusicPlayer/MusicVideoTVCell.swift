@@ -19,6 +19,7 @@ class MusicVideoTVCell: UITableViewCell {
     @IBOutlet weak var obrazekVideo: UIImageView!
     @IBOutlet weak var pozycjaVideo: UILabel!
     @IBOutlet weak var tytułVideo: UILabel!
+    @IBOutlet weak var artystaVideo: UILabel!
     
     
     override func awakeFromNib() {
@@ -37,6 +38,7 @@ class MusicVideoTVCell: UITableViewCell {
         tytułVideo.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         pozycjaVideo.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         
+        artystaVideo.text = video?.artystaV
         tytułVideo.text = video?.nazwaV
         pozycjaVideo.text = "\(video!.rankowanie)"
         
