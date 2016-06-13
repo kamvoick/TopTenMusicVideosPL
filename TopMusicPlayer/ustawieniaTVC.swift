@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class ustawieniaTVC: UITableViewController {
+class ustawieniaTVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var informacjeLbl: UILabel!
     @IBOutlet weak var bezpieczenstwoLbl: UILabel!
@@ -72,6 +73,56 @@ class ustawieniaTVC: UITableViewController {
 
         print("zmieniła się wielkość czcionek")
     }
+    
+    //mail i wyślij sugestie
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 && indexPath.row == 1 {
+            
+            let konfiguracjaMailaViewController = konfiguracjaMaila()
+            if MFMailComposeViewController.canSendMail() {//musimy sprawdzić czy ta osoba ma konto utworzone
+                self.presentViewController(konfiguracjaMailaViewController, animated: true, completion: nil)
+            }else{
+                //nie ma konta
+                mailAlert()
+            }
+        }
+    }
+    
+    func konfiguracjaMaila() -> MFMailComposeViewController{ //chcemy żeby wypluło nasz vc z już wpisanymi danymi
+        
+        let konfiguracjaMailaVC = MFMailComposeViewController()
+        konfiguracjaMailaVC.mailComposeDelegate = self
+        konfiguracjaMailaVC.setToRecipients(["kam.voick@gmail.com"])
+        konfiguracjaMailaVC.setSubject("Sugestie i opinie")
+        //konfiguracjaMailaVC.setMessageBody("", isHTML: false) //tu możemy wsadzić treść
+        return konfiguracjaMailaVC
+    }
+    
+    func mailAlert(){
+        let alertController: UIAlertController = UIAlertController(title: "Alert", message: "Nie masz ustawionego konta poczty mail", preferredStyle: .Alert)
+        let przyciskOk = UIAlertAction(title: "Ok", style: .Default) { (UIAlertAction) in
+            //tutaj możemy coś wykonać, np przejsc do konfigur...
+        }
+        
+        alertController.addAction(przyciskOk)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        switch result.rawValue { //tutaj wpisujemy do konsoli co się stało
+        case MFMailComposeResultCancelled.rawValue:
+            print("Mail anulowany")
+        case MFMailComposeResultSaved.rawValue:
+            print("Mail zapisany")
+        case MFMailComposeResultFailed.rawValue:
+            print("Błąd zapisu maila")
+        case MFMailComposeResultSent.rawValue:
+            print("Mail wysłany")
+        default:
+            print("Nieznany błąd")
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    } //i musimy odwołać kontrollera bo nie zejdzie inaczej
     
     deinit{        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)//usuwamy obserwatora
