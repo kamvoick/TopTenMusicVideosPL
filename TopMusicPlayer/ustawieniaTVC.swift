@@ -13,7 +13,7 @@ class ustawieniaTVC: UITableViewController, MFMailComposeViewControllerDelegate 
 
     @IBOutlet weak var informacjeLbl: UILabel!
     @IBOutlet weak var bezpieczenstwoLbl: UILabel!
-    @IBOutlet weak var touchIdSwitch: UISwitch!
+    //@IBOutlet weak var touchIdSwitch: UISwitch!
     @IBOutlet weak var jakoscZdjecLbl: UILabel!
     @IBOutlet weak var jakoscZdjecSwitch: UISwitch!
     @IBOutlet weak var liczbaMusicVideo: UILabel!
@@ -31,8 +31,8 @@ class ustawieniaTVC: UITableViewController, MFMailComposeViewControllerDelegate 
         
         title = "ustawienia"
         
-        //tu pobieramy switcha
-        touchIdSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("ustawieniaBezpieczeństwa")
+        /*tu pobieramy switcha
+        touchIdSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("ustawieniaBezpieczeństwa")*/
         
         if (NSUserDefaults.standardUserDefaults().objectForKey("sliderLiczbaMusicVideo") != nil){ //musimy sprawdzić czy coś tam już jest bo będzie crash
             let wartość = NSUserDefaults.standardUserDefaults().objectForKey("sliderLiczbaMusicVideo") as! Int //jeżeli nie zcastujemy to będzie dowolny obiekt
@@ -50,7 +50,7 @@ class ustawieniaTVC: UITableViewController, MFMailComposeViewControllerDelegate 
         liczbaMusicVideo.text = "\(Int(sliderLiczbaMusicVideo.value))"
     }
 
-    //tutaj ustawiamy switcha i zapisujemy w nsuderdefaults
+    /*tutaj ustawiamy switcha i zapisujemy w nsuderdefaults
     @IBAction func touchID(sender: AnyObject) {
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -59,7 +59,7 @@ class ustawieniaTVC: UITableViewController, MFMailComposeViewControllerDelegate 
         }else{
             defaults.setBool(false, forKey: "ustawieniaBezpieczeństwa")
         }
-    }
+    }   jak odblokowujesz to to też wyżej switcha pobierasz*/
     
     
     func zmieniłaSięWielkośćCzcionek() {

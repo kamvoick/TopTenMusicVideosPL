@@ -9,9 +9,10 @@
 import UIKit
 import AVKit
 import AVFoundation
+import LocalAuthentication
 
 
-class szczegolyMusicVideoVC: UIViewController {
+class szczegolyMusicVideoVC: UIViewController  {
 
     @IBOutlet weak var tytułVideo: UILabel!
     @IBOutlet weak var obrazekVideo: UIImageView!
@@ -20,7 +21,7 @@ class szczegolyMusicVideoVC: UIViewController {
     @IBOutlet weak var prawaVideo: UILabel!
     
     var videos: MusicVideos!
-    var bezpieczeństwo: Bool = false
+    //var switchBezpieczeństwa: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,20 @@ class szczegolyMusicVideoVC: UIViewController {
         obrazekVideo.clipsToBounds = true
         
     }
+    
+    func sprawdzenieTouchId(){
+        
+    }
+    
     @IBAction func socialMedia(sender: UIBarButtonItem) {
+       /* switchBezpieczeństwa = NSUserDefaults.standardUserDefaults().boolForKey("ustawieniaBezpieczeństwa") //musi być bool bo sprawdzamy czy jest czy nie i zapisujemy do nsuserdefaults, wcześniej to deklarowaliśmy przy switchu
+        
+        switch switchBezpieczeństwa {
+        case true:
+            sprawdzenieTouchId() //kiedy ust bezpieczenstwa są włączone to sprawdzamy czy touchid się zgadza
+        default:
+            pokażZnajomym() //jeżeli nie jest ustawiony socialmedia działa
+        } */
         pokażZnajomym()
     }
     
