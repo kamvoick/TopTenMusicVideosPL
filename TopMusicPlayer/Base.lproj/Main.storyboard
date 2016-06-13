@@ -111,19 +111,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQv-up-djO">
-                                                    <rect key="frame" x="263" y="29" width="74" height="21"/>
+                                                    <rect key="frame" x="518" y="29" width="74" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="74" id="WOm-iQ-cuZ"/>
+                                                        <constraint firstAttribute="width" constant="74" id="JR6-x5-BMA"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liczba wyświetlanych teledysków muzycznych" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-kf-0Wd">
+                                                    <rect key="frame" x="8" y="29" width="446" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pQv-up-djO" firstAttribute="centerY" secondItem="SdE-7I-jjf" secondAttribute="centerY" id="Aga-tc-mcW"/>
-                                                <constraint firstItem="pQv-up-djO" firstAttribute="centerX" secondItem="SdE-7I-jjf" secondAttribute="centerX" id="C8t-WN-1Xt"/>
-                                                <constraint firstItem="pQv-up-djO" firstAttribute="top" secondItem="SdE-7I-jjf" secondAttribute="topMargin" constant="21" id="H19-dT-hlv"/>
+                                                <constraint firstItem="Fcz-kf-0Wd" firstAttribute="centerY" secondItem="SdE-7I-jjf" secondAttribute="centerY" id="0hC-7d-pia"/>
+                                                <constraint firstItem="Fcz-kf-0Wd" firstAttribute="leading" secondItem="SdE-7I-jjf" secondAttribute="leadingMargin" id="M9E-dv-fnV"/>
+                                                <constraint firstItem="Fcz-kf-0Wd" firstAttribute="baseline" secondItem="pQv-up-djO" secondAttribute="baseline" id="Svg-Y0-RMl"/>
+                                                <constraint firstItem="pQv-up-djO" firstAttribute="trailing" secondItem="SdE-7I-jjf" secondAttribute="trailingMargin" id="bXa-lc-mH6"/>
+                                                <constraint firstItem="Fcz-kf-0Wd" firstAttribute="top" secondItem="SdE-7I-jjf" secondAttribute="topMargin" constant="21" id="nni-71-STQ"/>
+                                                <constraint firstItem="pQv-up-djO" firstAttribute="leading" secondItem="Fcz-kf-0Wd" secondAttribute="trailing" constant="64" id="oSz-Yd-aoU"/>
+                                                <constraint firstItem="Fcz-kf-0Wd" firstAttribute="firstBaseline" secondItem="pQv-up-djO" secondAttribute="firstBaseline" id="zgi-Da-fuj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -135,16 +145,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="mM3-yB-Bi2">
-                                                    <rect key="frame" x="39" y="25" width="522" height="31"/>
+                                                    <rect key="frame" x="39" y="41" width="522" height="31"/>
                                                     <connections>
                                                         <action selector="zmieniaczLiczbyWideo:" destination="siA-3b-Yxj" eventType="valueChanged" id="bk6-Te-VVa"/>
                                                     </connections>
                                                 </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ustaw ilość teledysków" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdm-Cp-vkq">
+                                                    <rect key="frame" x="234" y="12" width="132" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="zm3-Ag-7b7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mM3-yB-Bi2" firstAttribute="centerY" secondItem="Te6-Or-GB8" secondAttribute="centerY" id="EYN-hu-e4K"/>
-                                                <constraint firstItem="mM3-yB-Bi2" firstAttribute="leading" secondItem="Te6-Or-GB8" secondAttribute="leadingMargin" constant="33" id="XPJ-x5-9e5"/>
-                                                <constraint firstItem="mM3-yB-Bi2" firstAttribute="centerX" secondItem="Te6-Or-GB8" secondAttribute="centerX" id="yMx-se-VVT"/>
+                                                <constraint firstItem="hdm-Cp-vkq" firstAttribute="centerX" secondItem="Te6-Or-GB8" secondAttribute="centerX" id="Nk1-nB-fsE"/>
+                                                <constraint firstItem="hdm-Cp-vkq" firstAttribute="centerX" secondItem="mM3-yB-Bi2" secondAttribute="centerX" id="RXO-5M-0qj"/>
+                                                <constraint firstItem="mM3-yB-Bi2" firstAttribute="bottom" secondItem="Te6-Or-GB8" secondAttribute="bottomMargin" id="fiF-xo-0Y1"/>
+                                                <constraint firstItem="mM3-yB-Bi2" firstAttribute="leading" secondItem="Te6-Or-GB8" secondAttribute="leadingMargin" constant="33" id="pC7-3z-rYp"/>
+                                                <constraint firstItem="mM3-yB-Bi2" firstAttribute="top" secondItem="hdm-Cp-vkq" secondAttribute="bottom" constant="8" symbolic="YES" id="sx1-ME-9Kt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -162,8 +183,10 @@
                         <outlet property="jakoscZdjecLbl" destination="lAC-lR-vdE" id="1sw-gp-Ybo"/>
                         <outlet property="jakoscZdjecSwitch" destination="OS2-Tu-XKA" id="P1c-Ou-bLL"/>
                         <outlet property="liczbaMusicVideo" destination="pQv-up-djO" id="Gzz-b0-YZ1"/>
+                        <outlet property="liczbaWyświetlanychTel" destination="Fcz-kf-0Wd" id="WbV-EZ-MYI"/>
                         <outlet property="sliderLiczbaMusicVideo" destination="mM3-yB-Bi2" id="ngB-LV-eue"/>
                         <outlet property="touchIdSwitch" destination="WZn-PU-hWY" id="9co-IF-gJt"/>
+                        <outlet property="ustawLiczbęTel" destination="hdm-Cp-vkq" id="Ttb-ez-cdk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Usv-5a-R4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,12 +259,19 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="Ustawienia" id="lTF-Z1-8hA">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="siA-3b-Yxj" kind="show" id="f04-T0-HMW"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="chs-mq-t0X"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="AKp-cU-q62">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="odświeżanie:" destination="2W3-Jq-7Hd" eventType="valueChanged" id="ve6-7X-d2f"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeF-AG-1YE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,6 +398,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="CfN-d5-kbA"/>
                         <barButtonItem systemItem="action" id="ojE-X7-9qB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="socialMedia:" destination="VbZ-71-ddb" id="1rS-3X-57D"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <connections>

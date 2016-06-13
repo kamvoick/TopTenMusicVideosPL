@@ -12,6 +12,7 @@ class MusicVideoTVC: UITableViewController {
 
     
     var videos = [MusicVideos]()
+    var limit = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,9 @@ class MusicVideoTVC: UITableViewController {
         for (index, element) in videos.enumerate(){
             print("id: \(index), nazwa: \(element.nazwaV)")
         }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        title = "\(limit) najpopularniejszych video w Polsce"
         
         tableView.reloadData()
         
@@ -92,9 +96,30 @@ class MusicVideoTVC: UITableViewController {
         }
     }
     
+    
+    @IBAction func odświeżanie(sender: AnyObject) {
+        refreshControl?.endRefreshing() //mamy to takie kółko - spinner i chcemy żeby się zatrzymało
+        wykonajApi()
+    }
+    
+    func pobierzLiczbęVideo(){ //pobieramy dane przy odświeżaniu z góry
+        if (NSUserDefaults.standardUserDefaults().objectForKey("sliderLiczbaMusicVideo") != nil){ //sprawdzamy czy coś już jest zapisane, jeżeli tak to
+            let wartość = NSUserDefaults.standardUserDefaults().objectForKey("sliderLiczbaMusicVideo") as! Int
+            limit = wartość
+        }
+        let formatowanie = NSDateFormatter() //tutaj kod formatowania daty
+        formatowanie.dateFormat = "h:mm a" //unicod
+        let odświeżanieDaty = formatowanie.stringFromDate(NSDate())
+        
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(odświeżanieDaty)") //odświeżanie z góry z dodatkową nazwą
+    }
+    
     func wykonajApi(){
+        
+        pobierzLiczbęVideo() //pobieramy ile ma być pobranych video z naszego slidera, func wyżej
+        
         let API = APIManager()
-        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=200/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane, 200 to max dla itunes
+        API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=\(limit)/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane, 200 to max dla itunes
     }
     
     deinit{

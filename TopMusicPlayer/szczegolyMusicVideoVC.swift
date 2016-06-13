@@ -45,6 +45,39 @@ class szczegolyMusicVideoVC: UIViewController {
         obrazekVideo.clipsToBounds = true
         
     }
+    @IBAction func socialMedia(sender: UIBarButtonItem) {
+        pokażZnajomym()
+    }
+    
+    
+    func pokażZnajomym(){ //musimy zrobić funkcje ponieważ mam ustawienia bezpieczenstwa i w zaleznosci czy włączone czy nie będzie działać
+        
+        let wiadomość1 = "Sprawdź ten teledysk, jest naprawdę super!"
+        
+        let aktywnośćViewController: UIActivityViewController = UIActivityViewController(activityItems: [wiadomość1], applicationActivities: nil) //wiadomość do wpisania jak koomuś coś udostępniasz
+        
+        aktywnośćViewController.excludedActivityTypes = [
+        UIActivityTypePostToFacebook,
+        UIActivityTypePostToTwitter,
+        UIActivityTypeMessage,
+        UIActivityTypeMail,
+        UIActivityTypePrint,
+        UIActivityTypeCopyToPasteboard,
+        UIActivityTypeAssignToContact,
+        UIActivityTypeSaveToCameraRoll,
+        UIActivityTypeAddToReadingList,
+        UIActivityTypePostToFlickr,
+        UIActivityTypePostToVimeo]
+        
+        aktywnośćViewController.completionWithItemsHandler = {
+            (aktywność, sukces, item, error) in //tutaj w momencie gdy skończymy wybór można coś zrobić
+            
+            if aktywność == UIActivityTypeMail {
+                print("mail wybrany")
+            }
+        }
+        self.presentViewController(aktywnośćViewController, animated: true, completion: nil)
+    }
     
     @IBAction func odtwarzajVideo(sender: AnyObject) {
         
@@ -55,8 +88,6 @@ class szczegolyMusicVideoVC: UIViewController {
         self.presentViewController(odtwarzaczViewController, animated: true) { 
             odtwarzaczViewController.player?.play()
         }
-        
-        
     }
     
 }

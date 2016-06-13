@@ -17,6 +17,8 @@ class ustawieniaTVC: UITableViewController {
     @IBOutlet weak var jakoscZdjecSwitch: UISwitch!
     @IBOutlet weak var liczbaMusicVideo: UILabel!
     @IBOutlet weak var sliderLiczbaMusicVideo: UISlider!
+    @IBOutlet weak var liczbaWyświetlanychTel: UILabel!
+    @IBOutlet weak var ustawLiczbęTel: UILabel!
     
     
     
@@ -35,7 +37,9 @@ class ustawieniaTVC: UITableViewController {
             let wartość = NSUserDefaults.standardUserDefaults().objectForKey("sliderLiczbaMusicVideo") as! Int //jeżeli nie zcastujemy to będzie dowolny obiekt
             liczbaMusicVideo.text = "\(wartość)"
             sliderLiczbaMusicVideo.value = Float(wartość) //bo tutaj jest zawsze float a my bierzemy z int
-            
+        }else{
+            sliderLiczbaMusicVideo.value = 10.0 //musimy ustawić pierwszą wartość jeżeli jej nie ma
+            liczbaMusicVideo.text = "\(Int(sliderLiczbaMusicVideo.value))"
         }
     }
     @IBAction func zmieniaczLiczbyWideo(sender: AnyObject) {
@@ -50,7 +54,7 @@ class ustawieniaTVC: UITableViewController {
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if touchIdSwitch.on {
-            defaults.setBool(touchIdSwitch.on, forKey: "ustawieniaBezpieczeństwa")
+            defaults.setBool(touchIdSwitch.on, forKey: "ustawieniaBezpieczeństwa")//spradzamy czy włączony
         }else{
             defaults.setBool(false, forKey: "ustawieniaBezpieczeństwa")
         }
@@ -62,6 +66,9 @@ class ustawieniaTVC: UITableViewController {
         bezpieczenstwoLbl.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         jakoscZdjecLbl.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         liczbaMusicVideo.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        liczbaWyświetlanychTel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        ustawLiczbęTel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        
 
         print("zmieniła się wielkość czcionek")
     }

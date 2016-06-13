@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let API = APIManager()
         API.zaladujDane("https://itunes.apple.com/pl/rss/topmusicvideos/limit=100/json", completion: zaladowalDane)//kiedy zaladowanie jest ukonczone wykona func zaladowaldane
         
+        title = ""
+        
         
     }
     
