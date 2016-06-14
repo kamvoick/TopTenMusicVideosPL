@@ -2,7 +2,7 @@
 //  MusicVideo.swift
 //  TopMusicPlayer
 //
-//  Created by Kamil Wójcik on 10.06.2016.
+//  Created by Kamil Wójcik on 10.05.2016.
 //  Copyright © 2016 Kamil Wójcik. All rights reserved.
 //
 

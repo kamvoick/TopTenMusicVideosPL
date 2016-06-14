@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TopMusicPlayer
 //
-//  Created by Kamil Wójcik on 09.06.2016.
+//  Created by Kamil Wójcik on 09.05.2016.
 //  Copyright © 2016 Kamil Wójcik. All rights reserved.
 //
 

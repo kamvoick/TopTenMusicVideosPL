@@ -2,7 +2,7 @@
 //  ustawieniaTVC.swift
 //  TopMusicPlayer
 //
-//  Created by Kamil Wójcik on 12.06.2016.
+//  Created by Kamil Wójcik on 12.05.2016.
 //  Copyright © 2016 Kamil Wójcik. All rights reserved.
 //
 
